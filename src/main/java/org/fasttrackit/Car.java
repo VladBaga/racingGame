@@ -1,10 +1,6 @@
 package org.fasttrackit;
 
-public class Car {
-    String name;
-    String color;
+public class Car extends AutoVehicle {
+
     int doorcount;
-    double mileage;
-    boolean running;
-    Engine engine;
 }
