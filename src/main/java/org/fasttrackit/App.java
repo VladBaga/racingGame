@@ -10,7 +10,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        Car car = new Car();
+        Engine engine = new Engine();
+        engine.manufacturer = "Renault";
+        engine.capacity = 1500;
+        engine.expiryDate = LocalDateTime.now().plusYears(10); //expira in 10 ani de acum
+
+        Car car = new Car(engine);
         car.name = "Dacia";
         car.color = "white";
         car.doorcount = 4;
@@ -24,12 +29,6 @@ public class App
         System.out.println("Hello!");
         System.out.println(car.toString());
 
-        Engine engine = new Engine();
-        engine.manufacturer = "Renault";
-        engine.capacity = 1500;
-        engine.expiryDate = LocalDateTime.now().plusYears(10); //expira in 10 ani de acum
-
-        car.engine = engine;
 
         car.engine.manufacturer = "BMW";
 
