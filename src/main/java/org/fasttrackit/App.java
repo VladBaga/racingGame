@@ -16,11 +16,13 @@ public class App
         engine.expiryDate = LocalDateTime.now().plusYears(10); //expira in 10 ani de acum
 
         Car car = new Car(engine);
-        car.name = "Dacia";
-        car.color = "white";
+        car.setName("Dacia");
+        car.setColor("White");
         car.doorcount = 4;
-        car.mileage = 7.5;
+        car.setMileage(7.5);
         car.running = true;
+
+        System.out.println(car.getName());
 
         double carTravelDistance = car.accelerate(100, 2);
 
