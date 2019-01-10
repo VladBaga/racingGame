@@ -1,5 +1,7 @@
 package org.fasttrackit;
 
+import org.fasttrackit.cheater.UFO;
+
 import java.time.LocalDateTime;
 
 /**
@@ -8,17 +10,17 @@ import java.time.LocalDateTime;
 public class App {
     public static void main(String[] args) {
 
-// Engine engine = new Engine();
-// engine.manufacturer = "Renault";
-// engine.capacity = 1500;
-// engine.expiryDate = LocalDateTime.now().plusYears(10); //expira in 10 ani de acum
+        Engine engine = new Engine();
+        engine.manufacturer = "Renault";
+        engine.capacity = 1500;
+        engine.expiryDate = LocalDateTime.now().plusYears(10); //expira in 10 ani de acum
 
-// Car car = new Car(engine);
-// car.setName("Dacia");
-// car.setColor("White");
-// car.doorcount = 4;
-// car.setMileage(7.5);
-// car.running = true;
+        Car car = new Car(engine);
+        car.setName("Dacia");
+        car.setColor("White");
+        car.doorcount = 4;
+        car.setMileage(7.5);
+        car.running = true;
 
 // System.out.println(car.getName());
 
@@ -51,7 +53,11 @@ public class App {
         new AutoVehicle();
         new AutoVehicle(new Engine());
 
-        vehicle1.accelerate(100);
-        vehicle2.accelerate(50, 5);
+        vehicle1.accelerate(100);//am apelat o metoda din Vehicle, constructor overloading
+        vehicle2.accelerate(130, 0.8);
+
+        new UFO().accelerate(130, 0.8);
+
+        System.out.println(car);
     }
 }
