@@ -3,11 +3,19 @@ package org.fasttrackit;
 
 public class Vehicle {
 
+    public static int vehicleCount; //daca adaugat o constanta "final" inainte de int, ii stabilim o valorea finala
+    //conventia este sa se scrie cu snake-case intotdeauna numele unei constante "SNAKE_CASE".
+
     private String name;
     private String color;
     private double mileage;
 // public - toate clasele, private - doar clasa respectiva, protected - toate clasele din pachet sau subclase
 //    public void    - nu returneaza nimic
+
+
+    public Vehicle() {
+        vehicleCount++;
+    }
 
     public double accelerate(double speed, double durationInHours){ //semnatura - actiune - parametrii
 
