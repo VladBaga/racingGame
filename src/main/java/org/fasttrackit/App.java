@@ -4,12 +4,9 @@ import java.time.LocalDateTime;
 
 /**
  * Hello world!
- *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
 
 // Engine engine = new Engine();
 // engine.manufacturer = "Renault";
@@ -26,7 +23,6 @@ public class App
 // System.out.println(car.getName());
 
 // double carTravelDistance = car.accelerate(100, 2);
-
 
 
 // System.out.println("Hello!");
@@ -51,5 +47,11 @@ public class App
         System.out.println("Value from vehicle 1:  " + vehicle1.vehicleCount);
         System.out.println("Value from vehicle 2:  " + vehicle1.vehicleCount);
         System.out.println("Value from vehicle class:  " + vehicle1.vehicleCount);
+
+        new AutoVehicle();
+        new AutoVehicle(new Engine());
+
+        vehicle1.accelerate(100);
+        vehicle2.accelerate(50, 5);
     }
 }

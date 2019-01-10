@@ -28,6 +28,16 @@ public class Vehicle {
       return traveledDistance;
     }
 
+  // public double accelerate(double speed){
+  //     System.out.println(name + " accelerated with " + speed + " km/h for" + 1 + " hours ");
+  //     double traveledDistance = speed * 1;
+  //     System.out.println(" Traveled distance: " + traveledDistance + " km.");
+  //     return traveledDistance;
+   // }
+    public double accelerate (double speed){
+        return accelerate(speed, 1);
+    }
+
     public String getName() {
         return name;
     }
