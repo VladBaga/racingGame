@@ -9,6 +9,8 @@ public class Vehicle {
     private String name;
     private String color;
     private double mileage;
+    private double fuelLevel;
+    private double totalTraveledDistance;
 // public - toate clasele, private - doar clasa respectiva, protected - toate clasele din pachet sau subclase
 //    public void    - nu returneaza nimic
 
@@ -17,7 +19,7 @@ public class Vehicle {
         vehicleCount++;
     }
 
-    public double accelerate(double speed, double durationInHours){ //semnatura - actiune - parametrii
+    public double accelerate(double speed, double durationInHours) { //semnatura - actiune - parametrii
 
         System.out.println(name + " accelerated with " + speed + " km/h " + durationInHours + " hours.");
 
@@ -25,25 +27,34 @@ public class Vehicle {
 
         System.out.println("Traveled distance:" + traveledDistance + " km.");
 
-      return traveledDistance;
+//        totalTraveledDistance = totalTraveledDistance + traveledDistance;
+        totalTraveledDistance += traveledDistance; //prescurtare pentru afirmatia de mai sus
+
+        System.out.println("Total traveled distance : " + totalTraveledDistance);
+
+        double spentFuel = traveledDistance * mileage / 100;
+        fuelLevel -= spentFuel;
+        System.out.println("Remaining fuel : " + fuelLevel);
+
+        return traveledDistance;
     }
 
-  // public double accelerate(double speed){
-  //     System.out.println(name + " accelerated with " + speed + " km/h for" + 1 + " hours ");
-  //     double traveledDistance = speed * 1;
-  //     System.out.println(" Traveled distance: " + traveledDistance + " km.");
-  //     return traveledDistance;
-   // }
-    public double accelerate (double speed){
+
+    // public double accelerate(double speed){
+    //     System.out.println(name + " accelerated with " + speed + " km/h for" + 1 + " hours ");
+    //     double traveledDistance = speed * 1;
+    //     System.out.println(" Traveled distance: " + traveledDistance + " km.");
+    //     return traveledDistance;
+    // }
+    public double accelerate(double speed) {
         return accelerate(speed, 1);
     }
 
-    protected Vehicle clone(){
+    protected Vehicle clone() {
         Vehicle vehicle = new Vehicle();
         //copy properties from current object or simply call this.clone();
         return vehicle;
     }
-
     public String getName() {
         return name;
     }
@@ -66,6 +77,22 @@ public class Vehicle {
 
     public void setMileage(double mileage) {
         this.mileage = mileage;
+    }
+
+    public double getFuelLevel() {
+        return fuelLevel;
+    }
+
+    public void setFuelLevel(double fuelLevel) {
+        this.fuelLevel = fuelLevel;
+    }
+
+    public double getTotalTraveledDistance() {
+        return totalTraveledDistance;
+    }
+
+    public void setTotalTraveledDistance(double totalTraveledDistance) {
+        this.totalTraveledDistance = totalTraveledDistance;
     }
 
     @Override
