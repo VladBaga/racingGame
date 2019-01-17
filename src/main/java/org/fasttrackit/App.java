@@ -13,8 +13,8 @@ public class App {
 //        System.out.println(4 % 2); // Restul impartirii 0
 //        System.out.println(4 % 3); // Restul impartirii 1
 
-//        Game game = new Game();
-//        game.start();
+        Game game = new Game();
+        game.start();
 
 //        System.out.println(args[0]);
 //        System.out.println(args[1]);

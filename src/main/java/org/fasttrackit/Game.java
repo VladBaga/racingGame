@@ -7,7 +7,7 @@ public class Game {
     Vehicle firstCompetitor;
     Vehicle secondCompetitor;
 
-    public void start(){
+    public void start() {
         addTracks();
         displayAvailableTracks();
     }
@@ -20,10 +20,23 @@ public class Game {
         tracks[1] = track2;
     }
 
-    private void displayAvailableTracks(){
+    private void displayAvailableTracks() {
         System.out.println("Available tracks: ");
-        System.out.println(tracks[0].getName());
-        System.out.println(tracks[1].getName());
+//        System.out.println(tracks[0].getName());
+//        System.out.println(tracks[1].getName());
 
+        //CLASSIC for
+  //   for (int i = 0; i < tracks.length; i++) { //<= sau >= sau ==
+  //       if (tracks[i] != null) { //if sau else if sau else
+  //           System.out.println(tracks[i].getName()); // BUCLA for; classic for loop
+  //       }
+
+  //   }
+        //ENHANCED for / "for each"
+        for (Track track : tracks) {
+            if (track != null) {
+                System.out.println(track.getName());
+            }
+        }
     }
 }
