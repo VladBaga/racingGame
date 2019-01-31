@@ -14,18 +14,41 @@ public class Game {
     Vehicle firstCompetitor;
     Vehicle secondCompetitor;
 
-    public void start() throws Exception {
+    public void start() {
         addCompetitors(getCompetitorCountFromUser());
         displayCompetitors();
 
         addTracks();
         displayAvailableTracks();
+        int numberFromUser = getTrackNumberFromUser();
+        Track track = tracks[numberFromUser - 1];
+        System.out.println("Selected track : " + track.getName() + " - length : " + track.getLength() + " km.");
+
+        boolean noWinnerYet = true;
+        int competitorsWithoutFuel = 0;
+
+        while (noWinnerYet && competitorsWithoutFuel < competitors.size()) {
+            for (Vehicle vehicle : competitors) {//Pentru - vehicul-vehicul din lista de competitors
+                double speed = getAccelerateSpeedFromUser();
+                vehicle.accelerate(speed);
+                if(vehicle.getFuelLevel() <= 0){
+                    competitorsWithoutFuel ++;
+                }
+
+                if (vehicle.getTotalTraveledDistance() >= track.getLength()) {
+                    System.out.println("Winner is : " + vehicle.getName());
+                    noWinnerYet = false;
+                    break;
+                }
+            }
+        }
     }
 
     private void addCompetitors(int competitorCount) { // SCRIERE IN LISTA
         for (int i = 0; i < competitorCount; i++) {
             Vehicle vehicle = new Vehicle();
             vehicle.setName(getVehicleNameFromUser());
+            vehicle.setFuelLevel(100);
             vehicle.setMileage(ThreadLocalRandom.current().nextDouble(5, 15));
             System.out.println("Vehicle mileage : " + vehicle.getMileage());
             //vehicle properties will be populated when we learn to get user's input
@@ -36,13 +59,18 @@ public class Game {
     private String getVehicleNameFromUser() {
         System.out.println("Please enter a vehicle name : ");
         Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        System.out.println("Your vehicle name is : " + name);
-
-        return name;
+        try {
+            String name = scanner.nextLine();
+            //Character.isAlphabetic() // repara acasa
+            System.out.println("Your vehicle name is : " + name);
+            return name;
+        } catch (InputMismatchException exception) {
+            System.out.println("Please enter a valid name.");
+            return getVehicleNameFromUser();
+        }
     }
 
-    private int getCompetitorCountFromUser() throws Exception {
+    private int getCompetitorCountFromUser() {
         System.out.println("Please enter number of players : ");
         Scanner scanner = new Scanner(System.in);
         try {
@@ -50,7 +78,9 @@ public class Game {
             System.out.println("Competitors number is :" + numberOfPlayers);
             return numberOfPlayers;
         } catch (InputMismatchException exception) {
-            throw new Exception("Integer required.");
+//            throw new Exception("Integer required.");
+            System.out.println("Please enter a valid integer.");
+            return getCompetitorCountFromUser();
         }
     }
 
@@ -89,6 +119,28 @@ public class Game {
             if (track != null) {
                 System.out.println(track.getName());
             }
+        }
+    }
+
+    private int getTrackNumberFromUser() {
+        System.out.println("Type the number of the track you wanna play on.");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException exception) {
+            System.out.println("Please type a valid number for the track");
+            return getTrackNumberFromUser();
+        }
+    }
+
+    private double getAccelerateSpeedFromUser() {
+        System.out.println("Please enter acceleration speed : ");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            return scanner.nextDouble();
+        } catch (InputMismatchException exception) {
+            System.out.println("Please re-type acceleration speed.");
+            return getAccelerateSpeedFromUser();
         }
     }
 }
