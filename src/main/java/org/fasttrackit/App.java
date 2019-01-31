@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * Hello world!
  */
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 //        System.out.println(4 % 2); // Restul impartirii 0
 //        System.out.println(4 % 3); // Restul impartirii 1
