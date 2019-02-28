@@ -12,9 +12,10 @@ public class DatabaseConfiguration {
     public static Connection getConnection() throws IOException, ClassNotFoundException, SQLException {
         Properties properties = new Properties();
 
-        InputStream inputStream = DatabaseConfiguration.class
+
+        try(InputStream inputStream = DatabaseConfiguration.class
                 .getClassLoader()
-                .getResourceAsStream("db.properties");
+                .getResourceAsStream("db.properties")){ // try with resources
 
         properties.load(inputStream);
 
@@ -25,5 +26,6 @@ public class DatabaseConfiguration {
                 properties.getProperty("DB_URL"),
                 properties.getProperty("DB_USERNAME"),
                 properties.getProperty("DB_PASSWORD"));
+    }
     }
 }
